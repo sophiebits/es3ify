@@ -2,7 +2,7 @@
 
 Browserify transform to convert quote reserved words in property keys for compatibility with ES3 JavaScript engines like IE8.
 
-```
+``` javascript
 // In
 var x = {class: 2};
 x.class = 3;
