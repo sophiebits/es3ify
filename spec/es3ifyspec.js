@@ -27,7 +27,7 @@ describe('es3ify', function() {
     });
 
     it('should transform everything at once', function() {
-        expect(transform('({a:[2,,3,],\tfor :2,}\n.class)'))
-                .toEqual('({a:[2,,3],\t"for" :2}[\n"class"])');
+        expect(transform('({a:2,\tfor :[2,,3,],}\n.class)'))
+                .toEqual('({a:2,\t"for" :[2,,3]}[\n"class"])');
     });
 });
