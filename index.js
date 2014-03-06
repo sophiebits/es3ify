@@ -122,5 +122,8 @@ function process(file) {
 }
 
 module.exports = process;
+module.exports.isReserved = function(word) {
+    return reservedDict.hasOwnProperty(word) ? !!reservedDict[word] : false;
+};
 module.exports.transform = transform;
 module.exports.visitorList = visitorList;
