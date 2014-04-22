@@ -12,9 +12,20 @@ var x = {"class": 2};
 x["class"] = [3, 4];
 ```
 
+To set up dev dependencies run
+
+```sh
+npm install
+```
+
 Run tests with:
 
 ```sh
-npm install -g jasmine-node
-jasmine-node spec
+npm test
+```
+
+check coverage with
+
+```sh
+npm run coverage
 ```

@@ -76,7 +76,7 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
         node.properties;
     elements.forEach(function(element, i) {
         if (element == null && i === elements.length - 1) {
-            throw new Error(
+            throw new SyntaxError(
                 "Elisions ending an array are interpreted inconsistently " +
                 "in IE8; remove the extra comma or use 'undefined' explicitly");
         }
