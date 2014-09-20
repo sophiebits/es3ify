@@ -9,6 +9,8 @@ describe('es3ify', function() {
     it('should quote member properties', function() {
         expect(transform('x.dynamic++; x.static++;'))
                 .toEqual('x.dynamic++; x["static"]++;');
+        expect(transform('({}).static;'))
+            .toEqual('({})["static"];');
     });
 
     it('should remove trailing commas in arrays', function() {
@@ -28,6 +30,6 @@ describe('es3ify', function() {
 
     it('should transform everything at once', function() {
         expect(transform('({a:2,\tfor :[2,,3,],}\n.class)'))
-                .toEqual('({a:2,\t"for" :[2,,3]}[\n"class"])');
+                .toEqual('({a:2,\t"for" :[2,,3]}\n["class"])');
     });
 });
