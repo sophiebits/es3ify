@@ -108,13 +108,23 @@ function transform(code) {
 }
 
 function process(file) {
+    if (/\.json$/.test(file)) return through();
     var data = '';
     function write(chunk) {
         data += chunk;
     }
 
     function compile() {
-        this.queue(transform(data));
+
+        var source;
+
+        try {
+          source = transform(data);
+        } catch (e) {
+          return this.emit('error', e);
+        }
+
+        this.queue(source);
         this.queue(null);
     }
 
