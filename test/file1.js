@@ -1,0 +1,1 @@
+exports.static = require('./file2');
