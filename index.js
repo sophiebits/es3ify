@@ -4,7 +4,7 @@ var through = require('through');
 var utils = require('jstransform/src/utils');
 
 var reserved = [
-    "break", "case", "catch", "continue", "default", "delete", "do", "else",
+    "bind", "break", "case", "catch", "continue", "default", "delete", "do", "else",
     "finally", "for", "function", "if", "in", "instanceof", "new", "return",
     "switch", "this", "throw", "try", "typeof", "var", "void", "while", "with",
     "abstract", "boolean", "byte", "char", "class", "const", "debugger",
