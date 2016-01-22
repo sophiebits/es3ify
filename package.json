@@ -1,28 +1,28 @@
 {
-    "name": "es3ify",
-    "version": "0.1.4",
-    "description": "Browserify transform to convert ES5 syntax to be ES3-compatible.",
-    "main": "index.js",
-    "dependencies": {
-        "esprima-fb": "~3001.0001.0000-dev-harmony-fb",
-        "jstransform": "~3.0.0",
-        "through": "~2.3.4"
-    },
-    "devDependencies": {
-        "jasmine-node": "~1.13.1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/spicyj/es3ify.git"
-    },
-    "scripts": {
-        "test": "jasmine-node spec"
-    },
-    "homepage": "https://github.com/spicyj/es3ify",
-    "author": {
-        "name": "Ben Alpert",
-        "email": "ben@benalpert.com",
-        "url": "http://benalpert.com"
-    },
-    "license": "MIT"
+  "name": "es3ify",
+  "version": "0.1.4",
+  "description": "Browserify transform to convert ES5 syntax to be ES3-compatible.",
+  "main": "index.js",
+  "dependencies": {
+    "esprima": "^2.7.1",
+    "jstransform": "~3.0.0",
+    "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "jasmine-node": "~1.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spicyj/es3ify.git"
+  },
+  "scripts": {
+    "test": "jasmine-node spec"
+  },
+  "homepage": "https://github.com/spicyj/es3ify",
+  "author": {
+    "name": "Ben Alpert",
+    "email": "ben@benalpert.com",
+    "url": "http://benalpert.com"
+  },
+  "license": "MIT"
 }
