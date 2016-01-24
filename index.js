@@ -1,4 +1,4 @@
-var Syntax = require('esprima-fb').Syntax;
+var Syntax = require('esprima').Syntax;
 var jstransform = require('jstransform');
 var through = require('through');
 var utils = require('jstransform/src/utils');
