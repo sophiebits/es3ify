@@ -84,6 +84,7 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
             // Copy commas from after previous element, if any
             utils.catchup(element.range[0], state);
             traverse(element, path, state);
+            utils.catchup(element.range[1], state);
         }
     });
 

@@ -16,6 +16,11 @@ describe('es3ify', function() {
                 .toEqual('[2, 3, 4]');
     });
 
+    it('should not remove commas in strings in arrays', function() {
+        expect(transform('["2, 3, 4,"]'))
+                .toEqual('["2, 3, 4,"]');
+    });
+
     it('should keep comments near a trailing comma', function() {
         expect(transform('[2, 3, 4 /* = 2^2 */,// = 6 - 2\n]'))
                 .toEqual('[2, 3, 4 /* = 2^2 */// = 6 - 2\n]');
