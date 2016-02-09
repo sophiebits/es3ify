@@ -1,6 +1,6 @@
 {
   "name": "es3ify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Browserify transform to convert ES5 syntax to be ES3-compatible.",
   "main": "index.js",
   "dependencies": {
