@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "esprima": "^2.7.1",
-    "jstransform": "~3.0.0",
+    "jstransform": "~11.0.0",
     "through": "~2.3.4"
   },
   "devDependencies": {
