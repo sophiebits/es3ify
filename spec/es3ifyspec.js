@@ -15,6 +15,11 @@ describe('es3ify', function() {
         expect(transform('[2, 3, 4,]'))
                 .toEqual('[2, 3, 4]');
     });
+    
+    it('should remove all commas in comma only arrays', function() {
+        expect(transform('[,,,]'))
+                .toEqual('[]');
+    });
 
     it('should not remove commas in strings in arrays', function() {
         expect(transform('["2, 3, 4,"]'))
