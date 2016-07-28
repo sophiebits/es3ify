@@ -75,11 +75,6 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
         node.elements :
         node.properties;
     elements.forEach(function(element, i) {
-        if (element == null && i === elements.length - 1) {
-            throw new Error(
-                "Elisions ending an array are interpreted inconsistently " +
-                "in IE8; remove the extra comma or use 'undefined' explicitly");
-        }
         if (element != null) {
             // Copy commas from after previous element, if any
             utils.catchup(element.range[0], state);
