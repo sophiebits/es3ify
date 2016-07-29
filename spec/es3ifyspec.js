@@ -15,10 +15,40 @@ describe('es3ify', function() {
         expect(transform('[2, 3, 4,]'))
                 .toEqual('[2, 3, 4]');
     });
-    
-    it('should remove all commas in comma only arrays', function() {
+
+    it('should explicitly add undefined in comma only arrays', function() {
         expect(transform('[,,,]'))
-                .toEqual('[]');
+                .toEqual('[void 0,void 0,void 0]');
+    });
+
+    it('should explicitly add undefined in comma only arrays', function() {
+        expect(transform('[,,2]'))
+            .toEqual('[void 0,void 0,2]');
+    });
+
+    it('should explicitly add undefined in comma only arrays', function() {
+        expect(transform('[3,,2]'))
+            .toEqual('[3,void 0,2]');
+    });
+
+    it('should explicitly add undefined in comma only arrays', function() {
+        expect(transform('[3,,,2]'))
+            .toEqual('[3,void 0,void 0,2]');
+    });
+
+    it('should explicitly add undefined in comma only arrays', function() {
+        expect(transform('[3,,5,,2]'))
+            .toEqual('[3,void 0,5,void 0,2]');
+    });
+
+    it('should explicitly add undefined and remove trailing comma', function() {
+        expect(transform('[2,,]'))
+                .toEqual('[2,void 0]');
+    });
+
+    it('should explicitly add undefined and remove trailing comma', function() {
+        expect(transform('[2,,,]'))
+            .toEqual('[2,void 0,void 0]');
     });
 
     it('should not remove commas in strings in arrays', function() {
@@ -38,6 +68,6 @@ describe('es3ify', function() {
 
     it('should transform everything at once', function() {
         expect(transform('({a:2,\tfor :[2,,3,],}\n.class)'))
-                .toEqual('({a:2,\t"for" :[2,,3]}[\n"class"])');
+                .toEqual('({a:2,\t"for" :[2,void 0,3]}[\n"class"])');
     });
 });
