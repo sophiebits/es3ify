@@ -15,6 +15,9 @@
     "type": "git",
     "url": "ssh://git@stash.iaccap.com:7999/wcpm/es3ify.git"
   },
+  "publishConfig": {
+    "registry": "http://nexus.iaccap.com/content/repositories/npm-internal/"
+  },
   "scripts": {
     "test": "jasmine-node spec",
     "build": "npm run test"
