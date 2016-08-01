@@ -16,7 +16,8 @@
     "url": "git://github.com/spicyj/es3ify.git"
   },
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "jasmine-node spec",
+    "build": "npm run test"
   },
   "homepage": "https://github.com/spicyj/es3ify",
   "author": {
