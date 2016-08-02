@@ -11,7 +11,7 @@ var reserved = [
     "double", "enum", "export", "extends", "final", "float", "goto",
     "implements", "import", "int", "interface", "long", "native", "package",
     "private", "protected", "public", "short", "static", "super",
-    "synchronized", "throws", "transient", "volatile",
+    "synchronized", "throws", "transient", "volatile"
 ];
 var reservedDict = {};
 reserved.forEach(function (k) {
@@ -84,7 +84,7 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
                 utils.append(',', state);
             }
             utils.append('void 0', state);
-            utils.move(previousRange[1], state);
+            utils.catchupWhiteSpace(previousRange[1], state);
         } else {
             previousRange = element.range;
             // Copy commas from after previous element, if any
