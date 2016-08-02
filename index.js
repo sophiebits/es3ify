@@ -11,10 +11,10 @@ var reserved = [
     "double", "enum", "export", "extends", "final", "float", "goto",
     "implements", "import", "int", "interface", "long", "native", "package",
     "private", "protected", "public", "short", "static", "super",
-    "synchronized", "throws", "transient", "volatile",
+    "synchronized", "throws", "transient", "volatile"
 ];
 var reservedDict = {};
-reserved.forEach(function(k) {
+reserved.forEach(function (k) {
     reservedDict[k] = true;
 });
 
@@ -30,7 +30,7 @@ function visitMemberExpression(traverse, node, path, state) {
     utils.append('"]', state);
     return false;
 }
-visitMemberExpression.test = function(node, path, state) {
+visitMemberExpression.test = function (node, path, state) {
     return node.type === Syntax.MemberExpression &&
         node.property.type === Syntax.Identifier &&
         reservedDict[node.property.name] === true;
@@ -47,7 +47,7 @@ function visitProperty(traverse, node, path, state) {
     traverse(node.value, path, state);
     return false;
 }
-visitProperty.test = function(node, path, state) {
+visitProperty.test = function (node, path, state) {
     return node.type === Syntax.Property &&
         node.key.type === Syntax.Identifier &&
         reservedDict[node.key.name] === true;
@@ -55,14 +55,14 @@ visitProperty.test = function(node, path, state) {
 
 var reCommaOrComment = /,|\/\*.+?\*\/|\/\/[^\n]+/g;
 function stripComma(value) {
-  return value.replace(reCommaOrComment, function(text) {
-    if (text === ',') {
-        return '';
-    } else {
-        // Preserve comments
-        return text;
-    }
-  });
+    return value.replace(reCommaOrComment, function (text) {
+        if (text === ',') {
+            return '';
+        } else {
+            // Preserve comments
+            return text;
+        }
+    });
 }
 
 // In: [1, 2, 3,]
@@ -74,13 +74,19 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
     var elements = node.type === Syntax.ArrayExpression ?
         node.elements :
         node.properties;
-    elements.forEach(function(element, i) {
-        if (element == null && i === elements.length - 1) {
-            throw new Error(
-                "Elisions ending an array are interpreted inconsistently " +
-                "in IE8; remove the extra comma or use 'undefined' explicitly");
-        }
-        if (element != null) {
+
+    var previousRange = [0, 0];
+
+    elements.forEach(function (element, i) {
+        if (element == null) {
+            previousRange = [previousRange[0] + 1, previousRange[1] + 1];
+            if (i !== 0) {
+                utils.append(',', state);
+            }
+            utils.append('void 0', state);
+            utils.catchupWhiteSpace(previousRange[1], state);
+        } else {
+            previousRange = element.range;
             // Copy commas from after previous element, if any
             utils.catchup(element.range[0], state);
             traverse(element, path, state);
@@ -93,7 +99,7 @@ function visitArrayOrObjectExpression(traverse, node, path, state) {
     utils.catchup(node.range[1], state);
     return false;
 }
-visitArrayOrObjectExpression.test = function(node, path, state) {
+visitArrayOrObjectExpression.test = function (node, path, state) {
     return node.type === Syntax.ArrayExpression ||
         node.type === Syntax.ObjectExpression;
 };
@@ -111,6 +117,7 @@ function transform(code) {
 function process(file) {
     if (/\.json$/.test(file)) return through();
     var data = '';
+
     function write(chunk) {
         data += chunk;
     }
@@ -120,9 +127,9 @@ function process(file) {
         var source;
 
         try {
-          source = transform(data);
+            source = transform(data);
         } catch (e) {
-          return this.emit('error', e);
+            return this.emit('error', e);
         }
 
         this.queue(source);
@@ -133,7 +140,7 @@ function process(file) {
 }
 
 module.exports = process;
-module.exports.isReserved = function(word) {
+module.exports.isReserved = function (word) {
     return reservedDict.hasOwnProperty(word) ? !!reservedDict[word] : false;
 };
 module.exports.transform = transform;

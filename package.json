@@ -1,6 +1,6 @@
 {
   "name": "es3ify",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "Browserify transform to convert ES5 syntax to be ES3-compatible.",
   "main": "index.js",
   "dependencies": {
@@ -13,10 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/spicyj/es3ify.git"
+    "url": "ssh://git@stash.iaccap.com:7999/wcpm/es3ify.git"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.iaccap.com/content/repositories/npm-internal/"
   },
   "scripts": {
-    "test": "jasmine-node spec"
+    "test": "jasmine-node spec",
+    "build": "npm run test"
   },
   "homepage": "https://github.com/spicyj/es3ify",
   "author": {
