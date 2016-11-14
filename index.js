@@ -11,7 +11,7 @@ var reserved = [
     "double", "enum", "export", "extends", "final", "float", "goto",
     "implements", "import", "int", "interface", "long", "native", "package",
     "private", "protected", "public", "short", "static", "super",
-    "synchronized", "throws", "transient", "volatile",
+    "synchronized", "throws", "transient", "volatile", "null"
 ];
 var reservedDict = {};
 reserved.forEach(function(k) {
