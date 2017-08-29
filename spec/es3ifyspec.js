@@ -2,8 +2,8 @@ var transform = require('../index.js').transform;
 
 describe('es3ify', function() {
     it('should quote property keys', function() {
-        expect(transform('x = {dynamic: 0, static: 17};'))
-                .toEqual('x = {dynamic: 0, "static": 17};');
+        expect(transform('x = {dynamic: 0, static: 17, null: 34};'))
+                .toEqual('x = {dynamic: 0, "static": 17, "null": 34};');
     });
 
     it('should quote member properties', function() {
