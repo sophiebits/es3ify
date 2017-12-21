@@ -1,28 +1,28 @@
 {
   "name": "es3ify",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Browserify transform to convert ES5 syntax to be ES3-compatible.",
   "main": "index.js",
   "dependencies": {
-    "esprima": "^2.7.1",
-    "jstransform": "~11.0.0",
-    "through": "~2.3.4"
+    "esprima": "^4.0.0",
+    "jstransform": "^11.0.3",
+    "through": "^2.3.8"
   },
   "devDependencies": {
-    "jasmine-node": "~1.13.1"
+    "jasmine-node": "^1.14.5"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/spicyj/es3ify.git"
+    "url": "git://github.com/sophiebits/es3ify.git"
   },
   "scripts": {
     "test": "jasmine-node spec"
   },
-  "homepage": "https://github.com/spicyj/es3ify",
+  "homepage": "https://github.com/sophiebits/es3ify",
   "author": {
-    "name": "Ben Alpert",
-    "email": "ben@benalpert.com",
-    "url": "http://benalpert.com"
+    "name": "Sophie Alpert",
+    "email": "hi@sophiebits.com",
+    "url": "https://sophiebits.com"
   },
   "license": "MIT"
 }
