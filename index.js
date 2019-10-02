@@ -2,6 +2,7 @@ var Syntax = require('esprima').Syntax;
 var jstransform = require('jstransform');
 var through = require('through');
 var utils = require('jstransform/src/utils');
+var path = require('path');
 
 var reserved = [
     "break", "case", "catch", "continue", "default", "delete", "do", "else",
@@ -17,6 +18,7 @@ var reservedDict = {};
 reserved.forEach(function(k) {
     reservedDict[k] = true;
 });
+var defaultExtensions = [".js", ".jsx", ".es6", ".es"];
 
 // In: x.class = 3;
 // Out: x["class"] = 3;
@@ -108,8 +110,10 @@ function transform(code) {
     return jstransform.transform(visitorList, code).code;
 }
 
-function process(file) {
-    if (/\.json$/.test(file)) return through();
+function process(file, opts) {
+    var extensions = opts.extensions || defaultExtensions;
+    var ext = path.extname(file);
+    if (extensions.indexOf(ext) === -1) return through();
     var data = '';
     function write(chunk) {
         data += chunk;
